@@ -1,0 +1,25 @@
+<p>Doing ajax request to reviewgist</p>
+<p>Url - http://www.reviewgist.de/api?operation=listmodels&format=json </p>
+<p>Will show the first model digital camera name in alert.</p>
+<script>
+	url = "http://www.reviewgist.de/api?operation=listmodels&format=json" 
+	/*$.getJSON("/proxy/relay?callback=?&url=" + encodeURIComponent(url), null, function(data) {
+		alert("here")
+		alert(data.response.models[0].display_name)
+	})*/
+$.ajax({
+   type: 'GET',
+    url: "/proxy/relay?callback=?&url=" + encodeURIComponent(url),
+    //url: url + "?callback=?",
+    async: false,
+    jsonpCallback: 'jsonCallback',
+    contentType: "application/json",
+    dataType: 'jsonp',
+    success: function(json) {
+       alert(json.response.models[0].display_name);
+    },
+    error: function(e) {
+       alert(e.message);
+    }
+});
+</script>

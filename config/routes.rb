@@ -1,4 +1,7 @@
-RailsApp::Application.routes.draw do
+Reviewgist::Application.routes.draw do
+  get "proxy/relay"
+  get "proxy/demo"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
